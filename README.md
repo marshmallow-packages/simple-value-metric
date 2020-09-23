@@ -2,7 +2,7 @@
 
 This is a package to create a simple metric card.
 
-<img src="https://raw.githubusercontent.com/marshmallow-packages/categorise-resources/master/resources/images/screenshot.png">
+<img src="https://raw.githubusercontent.com/marshmallow-packages/simple-value-metric/master/resources/screenshot/screenshot.png">
 
 ## Installation
 ```bash
