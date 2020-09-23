@@ -16,7 +16,7 @@ You can add this metric by adding the code like below to your `cards` method.
 // ...
 protected function cards()
 {
-	(new SimpleValue)
+	(new SimpleValueMetric)
 	    ->title('Scored quotations')
 	    ->calculate(
 	        function ($simple_value) {
