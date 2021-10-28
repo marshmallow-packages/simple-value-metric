@@ -17,6 +17,16 @@ class SimpleValueMetric extends Value
 
     public $footer;
 
+    public $show_button = true;
+
+    public $button_link;
+
+    public $button_text;
+
+    public $button_target;
+
+    public $button_class;
+
     public $suffix;
 
     public $help_width = 250;
@@ -32,6 +42,7 @@ class SimpleValueMetric extends Value
             [
                 // 'title' => $this->title,
                 'footerIcon' => $this->footer_icon,
+                'show_button' => $this->show_button,
                 // 'footer' => $this->footer,
                 // 'suffix' => $this->suffix,
                 // 'helpWidth' => $this->help_width,
@@ -61,6 +72,25 @@ class SimpleValueMetric extends Value
     public function footer($footer)
     {
         $this->withMeta(['footer' => $footer]);
+        return $this;
+    }
+
+    public function button(string $link, string $text, string $class = 'btn btn-default btn-primary', string $target = '_blank')
+    {
+        $this->withMeta([
+            'button_link' => $link,
+            'button_text' => $text,
+            'button_class' => $class,
+            'button_target' => $target,
+        ]);
+        return $this;
+    }
+
+    public function showButtonWhen($closure)
+    {
+        $this->withMeta([
+            'show_button' => $closure()
+        ]);
         return $this;
     }
 
