@@ -14,7 +14,7 @@
         "laravel-mix": "^6.0.34",
         "laravel-nova": "^1.12.3",
         "sass": "^1.43.4",
-        "sass-loader": "^12.3.0"
+        "sass-loader": "^13.0.0"
     },
     "dependencies": {
         "vue": "^2.6.14",
