@@ -70,7 +70,7 @@
 </template>
 
 <script>
-    export default {
-        props: ["card"],
-    };
+export default {
+    props: ["card"],
+};
 </script>

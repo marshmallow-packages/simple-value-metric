@@ -16,13 +16,13 @@ class CardServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $this->app->booted(function () {
-        //     $this->routes();
-        // });
+        $this->app->booted(function () {
+            $this->routes();
+        });
 
         Nova::serving(function (ServingNova $event) {
-            Nova::script('simple-value', __DIR__.'/../dist/js/card.js');
-            Nova::style('simple-value', __DIR__.'/../dist/css/card.css');
+            Nova::script('simple-value-metric', __DIR__.'/../dist/js/card.js');
+            Nova::style('simple-value-metric', __DIR__.'/../dist/css/card.css');
         });
     }
 
@@ -33,13 +33,13 @@ class CardServiceProvider extends ServiceProvider
      */
     protected function routes()
     {
-        // if ($this->app->routesAreCached()) {
-        //     return;
-        // }
+        if ($this->app->routesAreCached()) {
+            return;
+        }
 
-        // Route::middleware(['nova'])
-        //         ->prefix('nova-vendor/simple-value')
-        //         ->group(__DIR__.'/../routes/api.php');
+        Route::middleware(['nova'])
+                ->prefix('nova-vendor/simple-value-metric')
+                ->group(__DIR__.'/../routes/api.php');
     }
 
     /**
