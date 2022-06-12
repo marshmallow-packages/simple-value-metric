@@ -1,21 +1,19 @@
 <template>
-    <loading-card :loading="loading" class="px-6 py-4">
+    <Card class="flex flex-col items-center justify-center">
         <div class="flex mb-4">
             <h3 class="mr-3 text-base text-80 font-bold">
-                {{ title }}
+                {{ card.title }}
             </h3>
-
             <a
-                v-if="show_button && button_link && button_text"
-                :href="button_link"
-                :target="button_target"
+                v-if="card.show_button && card.button_link && card.button_text"
+                :href="card.button_link"
+                :target="card.button_target"
                 style="position: absolute; top: 10px; right: 10px"
-                :class="button_class"
+                :class="card.button_class"
             >
-                {{ button_text }}
+                {{ card.button_text }}
             </a>
-
-            <div v-if="helpText" class="absolute pin-r pin-b p-2 z-50">
+            <div v-if="card.helpText" class="absolute pin-r pin-b p-2 z-50">
                 <tooltip trigger="click">
                     <icon
                         type="help"
@@ -24,27 +22,24 @@
                         width="16"
                         class="cursor-pointer text-60 -mb-1"
                     />
-
                     <tooltip-content
                         slot="content"
-                        v-html="helpText"
-                        :max-width="helpWidth"
+                        v-html="card.helpText"
+                        :max-width="card.helpWidth"
                     />
                 </tooltip>
             </div>
         </div>
-
         <p class="flex items-center text-4xl mb-4">
-            {{ formattedValue }}
-            <span v-if="suffix" class="ml-2 text-sm font-bold text-80">{{
-                suffix
-            }}</span>
+            {{ card.formattedValue }}
+            <span v-if="card.suffix" class="ml-2 text-sm font-bold text-80">
+                {{ card.suffix }}
+            </span>
         </p>
-
         <div class="flex items-center">
             <p class="text-80 font-bold">
                 <svg
-                    v-if="footerIcon == 'Decrease'"
+                    v-if="card.footerIcon == 'Decrease'"
                     class="text-danger fill-current mr-2"
                     width="20"
                     height="12"
@@ -54,7 +49,7 @@
                     />
                 </svg>
                 <svg
-                    v-if="footerIcon == 'Increase'"
+                    v-if="card.footerIcon == 'Increase'"
                     class="rotate-180 text-success fill-current mr-2"
                     width="20"
                     height="12"
@@ -66,47 +61,16 @@
 
                 <span>
                     <span>
-                        {{ footer }}
+                        {{ card.footer }}
                     </span>
                 </span>
             </p>
         </div>
-    </loading-card>
+    </Card>
 </template>
 
 <script>
     export default {
-        props: {
-            card: {
-                type: Object,
-                required: true,
-            },
-            loading: {
-                default: true,
-            },
-        },
-
-        data: () => ({
-            loading: true,
-        }),
-
-        mounted() {
-            this.title = this.card.title;
-            this.helpText = this.card.helpText;
-            this.footerIcon = this.card.footerIcon;
-            this.footer = this.card.footer;
-            this.suffix = this.card.suffix;
-            this.helpWidth = this.card.helpWidth;
-            this.formattedValue = this.card.formattedValue;
-            this.button_link = this.card.button_link;
-            this.button_text = this.card.button_text;
-            this.button_target = this.card.button_target;
-            this.button_class = this.card.button_class;
-            this.show_button = this.card.show_button;
-
-            console.log(this.show_button);
-
-            this.loading = false;
-        },
+        props: ["card"],
     };
 </script>
