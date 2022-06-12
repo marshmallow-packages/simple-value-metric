@@ -2,9 +2,9 @@
 
 namespace Marshmallow\SimpleValueMetric;
 
-use Laravel\Nova\Metrics\Value;
+use Laravel\Nova\Card;
 
-class SimpleValueMetric extends Value
+class SimpleValueMetric extends Card
 {
     /**
      * The width of the card (1/3, 1/2, or full).
@@ -117,6 +117,7 @@ class SimpleValueMetric extends Value
             $callable = $this->calculateCallback;
             $callable($this);
         }
-        return 'simple-value';
+
+        return 'simple-value-metric';
     }
 }
