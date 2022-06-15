@@ -1,34 +1,40 @@
 <template>
-    <Card class="flex flex-col items-center justify-center">
-        <div class="flex mb-4">
-            <h3 class="mr-3 text-base text-80 font-bold">
+    <Card class="flex flex-col relative px-6 py-4">
+        <div class="h-6 flex justify-between items-center mb-4">
+            <h3 class="mr-3 leading-tight text-sm font-bold">
                 {{ card.title }}
             </h3>
-            <a
+            <div
                 v-if="card.show_button && card.button_link && card.button_text"
-                :href="card.button_link"
-                :target="card.button_target"
-                style="position: absolute; top: 10px; right: 10px"
-                :class="card.button_class"
+                class="flex relative ml-auto w-[6rem] flex-shrink-0"
             >
-                {{ card.button_text }}
-            </a>
-            <div v-if="card.helpText" class="absolute pin-r pin-b p-2 z-50">
-                <tooltip trigger="click">
-                    <icon
-                        type="help"
-                        viewBox="0 0 17 17"
-                        height="16"
-                        width="16"
-                        class="cursor-pointer text-60 -mb-1"
-                    />
-                    <tooltip-content
-                        slot="content"
-                        v-html="card.helpText"
-                        :max-width="card.helpWidth"
-                    />
-                </tooltip>
+                <a
+                    :href="card.button_link"
+                    :target="card.button_target"
+                    class="w-full px-2.5 py-1.5 border-2 border-primary-300 shadow-sm text-xs font-medium rounded text-primary-500 bg-white hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                    :class="card.button_class"
+                >
+                    <span class="w-full block text-center">
+                        {{ card.button_text }}
+                    </span>
+                </a>
             </div>
+        </div>
+        <div v-if="card.helpText" class="absolute pin-r pin-b p-2 z-50">
+            <tooltip trigger="click">
+                <icon
+                    type="help"
+                    viewBox="0 0 17 17"
+                    height="16"
+                    width="16"
+                    class="cursor-pointer text-60 -mb-1"
+                />
+                <tooltip-content
+                    slot="content"
+                    v-html="card.helpText"
+                    :max-width="card.helpWidth"
+                />
+            </tooltip>
         </div>
         <p class="flex items-center text-4xl mb-4">
             {{ card.formattedValue }}
@@ -70,7 +76,7 @@
 </template>
 
 <script>
-export default {
-    props: ["card"],
-};
+    export default {
+        props: ["card"],
+    };
 </script>
