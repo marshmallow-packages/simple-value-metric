@@ -3,9 +3,12 @@
 namespace Marshmallow\SimpleValueMetric;
 
 use Laravel\Nova\Card;
+use Laravel\Nova\Metrics\HasHelpText;
 
 class SimpleValueMetric extends Card
 {
+    use HasHelpText;
+
     /**
      * The width of the card (1/3, 1/2, or full).
      *
@@ -37,6 +40,7 @@ class SimpleValueMetric extends Card
 
     public function __construct()
     {
+        ray($this->getHelpText());
         parent::__construct();
         $this->withMeta(
             [
@@ -45,7 +49,8 @@ class SimpleValueMetric extends Card
                 'show_button' => $this->show_button,
                 // 'footer' => $this->footer,
                 // 'suffix' => $this->suffix,
-                // 'helpWidth' => $this->help_width,
+                // 'helpText' => $this->getHelpText(),
+                // 'helpWidth' => $this->getHelpWidth(),
                 // 'formattedValue' => '53.685',
             ]
         );
@@ -100,9 +105,15 @@ class SimpleValueMetric extends Card
         return $this;
     }
 
+    public function help($help_text)
+    {
+        $this->withMeta(['helpText' => $help_text]);
+        return $this;
+    }
+
     public function helpWidth($help_width)
     {
-        $this->withMeta(['help_width' => $help_width]);
+        $this->withMeta(['helpWidth' => $help_width]);
         return $this;
     }
 
