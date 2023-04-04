@@ -40,7 +40,6 @@ class SimpleValueMetric extends Card
 
     public function __construct()
     {
-        ray($this->getHelpText());
         parent::__construct();
         $this->withMeta(
             [
