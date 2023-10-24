@@ -56,9 +56,7 @@
                 </svg>
 
                 <span>
-                    <span>
-                        {{ card.footer }}
-                    </span>
+                    <span v-html="card.footer"></span>
                 </span>
             </p>
         </div>
